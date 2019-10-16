@@ -1,22 +1,26 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
-struct Product {
+//Product entity
+struct Product 
+{
   char* name;
   double price;
 };
-
-struct ProductStock {
+//Stock entity
+struct ProductStock 
+{
   struct Product product;
   int quantity;
 };
-
+//Shop entity
 struct Shop
 {
 double cash;
   struct ProductStock stock[20];
 };
-
+//Customer entity
 struct Customer 
 {
   char* name;
@@ -47,6 +51,6 @@ int main(void)
   printProduct(coke);
   
   struct ProductStock cokeStock = {coke, 20 };
-  printf("The shop has %d of the product %s\n", cokeStock.quantity, cokeStock.product.name);
-  return 0;
+  // printf("The shop has %d of the product %s\n", cokeStock.quantity, cokeStock.product.name);
+  // return 0;
 };
