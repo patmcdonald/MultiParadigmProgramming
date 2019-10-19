@@ -45,7 +45,7 @@ void printCustomer(struct Customer c)
   for(int i = 0; i < c.index; i++)
   {
     printProduct(c.shoppingList[i].product);
-    printf("%s ORDERS %d OF ABOVE PRODUCT", c.name, c.shoppingList[i].quantity);
+    printf("%s ORDERS %d OF ABOVE PRODUCT\n", c.name, c.shoppingList[i].quantity);
   }
 }
 
