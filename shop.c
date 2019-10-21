@@ -1,4 +1,4 @@
-//standard C packages import
+//standard C library packages import
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
