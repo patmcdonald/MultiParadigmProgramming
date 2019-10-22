@@ -46,21 +46,60 @@ void printCustomer(struct Customer c)
   {
     printProduct(c.shoppingList[i].product);
     printf("%s ORDERS %d OF ABOVE PRODUCT\n", c.name, c.shoppingList[i].quantity);
+    
+    double cost = c.shoppingList[i].quantity * c.shoppingList[i].product.price;
+    printf("The cost to %s will be €%.2f\n", c.name, cost);
   }
+}
+
+//Stock method
+void  createAndStockShop()
+{
+  struct Shop shop = { 200 };
+  FILE * fp;
+    char * line = NULL;
+    size_t len = 0;
+    ssize_t read;
+
+    fp = fopen("stock.csv", "r");
+    if (fp == NULL)
+        exit(EXIT_FAILURE);
+
+    while ((read = getline(&line, &len, fp)) != -1) {
+        //printf("Retrieved line of length %zu:\n", read);
+        printf("%s IS A LINE", line);
+    }
+
+    fclose(fp);
+    if (line)
+        free(line);
+    exit(EXIT_SUCCESS);
+  
 }
 
 //Main method
 int main(void)
 {
-  struct Customer pat = {"Pat", 100.0};
+//   struct Customer pat = {"Pat", 100.0};
+  
+//   struct Product coke = {"Can Coke", 1.10};
+//   struct Product bread = {"Bread", 0.70};
   
   
-  struct Product coke = {"Can Coke", 1.10};
-  // printProduct(coke);
+//   // printProduct(coke);
+//   struct ProductStock cokeStock = {coke, 20 };
+//   struct ProductStock breadStock = {bread, 2 };
   
-  struct ProductStock cokeStock = {coke, 20 };
-  pat.shoppingList[pat.index++] = cokeStock;
-  printCustomer(pat);
+//   pat.shoppingList[pat.index++] = cokeStock;
+//   pat.shoppingList[pat.index++] = breadStock;
+
+//   printCustomer(pat);
+
+  createAndStockShop();
   // printf("The shop has %d of the product %s\n", cokeStock.quantity, cokeStock.product.name);
-  // return 0;
+ return 0;
+
+
 };
+
+
