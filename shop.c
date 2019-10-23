@@ -19,7 +19,8 @@ struct ProductStock
 struct Shop
 {
 double cash;
-  struct ProductStock stock[20];
+struct ProductStock stock[20];
+int index;
 };
 //Customer entity
 struct Customer 
@@ -53,7 +54,7 @@ void printCustomer(struct Customer c)
 }
 
 //Stock method
-void  createAndStockShop()
+struct Shop createAndStockShop()
 {
   struct Shop shop = { 200 };
   FILE * fp;
@@ -67,13 +68,24 @@ void  createAndStockShop()
 
     while ((read = getline(&line, &len, fp)) != -1) {
         //printf("Retrieved line of length %zu:\n", read);
-        printf("%s IS A LINE", line);
+        //printf("%s IS A LINE", line);
+        char *name = strtok(line, ",");
+        char *p = strtok(NULL, ",");
+        char *q = strtok(NULL, ",");
+        int quantity = atoi(q);
+        double price = atof(p);
+        struct Product product = {name, price};
+        struct ProductStock stockItem = {product, quantity};
+        shop.stock[shop.index ++] = stockItem;
+        printf("NAME OF PRODUCT %s PRICE %.2f QUANTITY %d \n", name, price, quantity);
     }
 
-    fclose(fp);
-    if (line)
-        free(line);
-    exit(EXIT_SUCCESS);
+    return shop;
+
+    // fclose(fp);
+    // if (line)
+    //     free(line);
+    // exit(EXIT_SUCCESS);
   
 }
 
