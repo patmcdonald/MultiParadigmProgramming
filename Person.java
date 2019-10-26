@@ -1,4 +1,4 @@
-//Code from MPP - 6.3 - Java Part 2 video
+//Code from MPP - 6.3 - Java Part 1/2 video
 public class Person {
 
   private String name;
@@ -10,7 +10,7 @@ public class Person {
   } 
 
   public String toString(){
-    return "NAME: " + this.name + "AGE: " + this.age;
+    return "NAME: " + this.name + " AGE: " + this.age;
   }
 
   public static void main(String[] args){
