@@ -28,3 +28,4 @@ int main()
 	printf("Price is now %.2f for %s \n", a.price, a.name);
 	passPointer(b);
 	printf("Price is now %.2f for %s \n", a.price, a.name);
+}
