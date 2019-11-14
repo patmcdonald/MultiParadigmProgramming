@@ -144,9 +144,7 @@ void printCustomer(struct Customer c)
 	}
 }
 
-// TODO CHECK THIS CODE BEFORE FINAL SUBMISSION!!
-
-// searching both and comparing and returning price
+//search shop, customer, find price
 double findProductPrice(struct Shop s, struct Customer c)
 {
 	struct Product productcustomer;
@@ -174,7 +172,7 @@ double findProductPrice(struct Shop s, struct Customer c)
 				}
 				else
 				{
-					//calc bill
+					//calculate bill
 					amount = product.price * c.shoppingList[j].quantity + amount;
 					s.stock[i].quantity = s.stock[i].quantity - c.shoppingList[j].quantity;
 				}
@@ -192,10 +190,10 @@ else
 	{
 		printf("\n");
 		printf("Total Bill: %.2f\n", amount);
-		// new float in shop
+		//float in shop
 		printf("\n");
 		printf("--------Shop Float--------\n");
-		// add to the shop float
+		//add to float
 		s.cash = s.cash + amount;
 		printf("Shop float has been updated: %.2f\n", s.cash);
 		
@@ -209,15 +207,14 @@ else
 return -1;
 }
 
-struct Customer live()
+struct Customer liveShop()
 {
 
-// what's your name?
 printf("Hello! What's your name?\n");
 char *name = malloc(sizeof(char) * 50);
 scanf(" %s", name);
 
-// budget
+
 printf("What's your budget?\n");
 double budget;
 scanf("%lf", &budget);
@@ -257,7 +254,7 @@ printCustomer(c);
 //search price
 findProductPrice(shop, c);
 
-struct Customer newCust = live();
+struct Customer newCust = liveShop();
 findProductPrice(shop, newCust);
 
 return 0;
